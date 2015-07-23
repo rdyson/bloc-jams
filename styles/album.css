@@ -46,15 +46,23 @@ body.album {
 }
 
 .song-item-number {
-    width: 5%;
+    width: 25%;
 }
 
 .song-item-title {
-    width: 85%;
+    width: 30%;
 }
 
 .song-item duration {
+    width: 30%;
+}
+
+.song-item playcount {
     width: 5%;
+}
+
+th {
+    text-align: left;
 }
 
 @media (max-width: 40rem) and (min-width: 20rem) {
