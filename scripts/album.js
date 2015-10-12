@@ -1,3 +1,5 @@
+ var whichAlbum = 0;
+
 // Example Album
  var albumPicasso = {
      name: 'The Colors',
@@ -30,6 +32,30 @@
      ]
  };
 
+// A third example album
+var albumBlocParty = {
+    name: 'Silent Alarm',
+    artist: 'Bloc Party',
+    label: 'Atlantic',
+    year: '2005',
+    albumArtUrl: 'https://upload.wikimedia.org/wikipedia/en/0/00/Silentalarmcover.jpg',
+    songs: [
+        { name: 'Like Eating Glass', length: '4:22' },
+        { name: 'Helicopter', length: '3:40' },
+        { name: 'Positive Tension', length: '3:55' },
+        { name: 'Banquet', length: '3:21' },
+        { name: 'Blue Light', length: '2:47' },
+        { name: 'She\'s Hearing Voices', length: '3:29' },
+        { name: 'This Modern Love', length: '4:25' },
+        { name: 'Pioneers', length: '3:35' },
+        { name: 'Price of Gas', length: '4:19' },
+        { name: 'So Here We Are', length: '3:52' },
+        { name: 'Luno', length: '3:57' },
+        { name: 'Plans', length: '4:10' },
+        { name: 'Compliments', length: '4:43' }
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     
     var template =
@@ -42,16 +68,17 @@ var createSongRow = function(songNumber, songName, songLength) {
     
     return template;
     
-};
+ };
 
-var setCurrentAlbum = function(album) {
-    
-    // #1
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
-     var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-     var albumImage = document.getElementsByClassName('album-cover-art')[0];
-     var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+ // #1
+ var albumTitle = document.getElementsByClassName('album-view-title')[0];
+ var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+ var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+ var albumImage = document.getElementsByClassName('album-cover-art')[0];
+ var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+
+ var setCurrentAlbum = function(album) {
  
      // #2
      albumTitle.firstChild.nodeValue = album.name;
@@ -71,7 +98,17 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
    
-     setCurrentAlbum(albumMarconi);
+     setCurrentAlbum(albumBlocParty);
+
+     var albums = [albumPicasso, albumMarconi, albumBlocParty];
+     var index = 1;
+
+     albumImage.addEventListener("click", function(event) {
+        setCurrentAlbum(albums[index]);
+        index++;
+        if (index == albums.length) {
+            index = 0;
+        }
+     });
      
  };
-    
